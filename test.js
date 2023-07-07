@@ -1,12 +1,5 @@
-const crypto = require('node:crypto')
-const EventEmitter = require('node:events')
+const text = 'cường'
 
-const emitter = new EventEmitter()
+const regexText = new RegExp(text)
 
-emitter.on('notification', (body, time) => {
-    console.log(`Submit notification with text ${body} and time ${time}`)
-})
-
-setInterval(() => {
-    emitter.emit('notification', crypto.randomBytes(64).toString('hex'), new Date())
-}, 2000)
+console.log(typeof regexText)

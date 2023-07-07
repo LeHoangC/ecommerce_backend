@@ -1,7 +1,7 @@
 const { Schema, model } = require('mongoose') // Erase if already required
 
 const DOCUMENT_NAME = 'Inventory'
-const COLLECTION_NAME = 'Inventoris'
+const COLLECTION_NAME = 'Inventories'
 
 // Declare the Schema of the Mongo model
 var inventorySchema = new Schema(

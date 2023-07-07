@@ -61,10 +61,29 @@ class CartService {
         return await CartService.updateUserCartQuantity({ userId, product })
     }
 
-    static async addToCartV2({ userId, product = {} }) {
+    /*
+        shop_order_ids = [
+            {
+                shopId,
+                item_products: [
+                    {
+                        quantity,
+                        price,
+                        shopId,
+                        old_quntity,
+                        productId
+                    }
+                ]
+            }
+        ]
+    */
+
+    static async addToCartV2({ userId, shop_order_ids }) {
         const { productId, quantity, old_quantity } = shop_order_ids[0]?.item_products[0]
 
         const foundProduct = await getProductById(productId)
+
+        console.log({ foundProduct })
 
         if (!foundProduct) throw new NotFoundError('')
 

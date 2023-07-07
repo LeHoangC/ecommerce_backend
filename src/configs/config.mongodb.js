@@ -22,8 +22,6 @@ const pro = {
 
 const config = { dev, pro }
 
-// console.log(config['dev'])
-
 const env = process.env.NODE_ENV || 'dev'
 
 module.exports = config[env]

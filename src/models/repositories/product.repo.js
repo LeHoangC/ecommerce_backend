@@ -1,5 +1,5 @@
 const { Types } = require('mongoose')
-const { product, clothing, electronic, furniture } = require('../product.model')
+const { product } = require('../product.model')
 const { getSelectData, unGetSelectData, convertToObjectIdMongodb } = require('../../utils')
 
 const queryProduct = async ({ query, limit, skip }) => {
@@ -49,10 +49,6 @@ const findProduct = async ({ product_id, unSelect = ['__v'] }) => {
     return product.findById(product_id).select(unGetSelectData(unSelect))
 }
 
-const getProductById = async (productId) => {
-    return await product.findOne({ _id: convertToObjectIdMongodb(productId) }).lean()
-}
-
 const updateProductById = async ({ productId, bodyUpdate, model, isNew = true }) => {
     return await model.findByIdAndUpdate(productId, bodyUpdate, {
         new: isNew,
@@ -91,6 +87,26 @@ const unPublishProductByShop = async ({ product_shop, product_id }) => {
     return modifiedCount
 }
 
+const getProductById = async (productId) => {
+    return await product.findOne({ _id: convertToObjectIdMongodb(productId) }).lean()
+}
+
+const checkProductByServer = async (products) => {
+    return await Promise.all(
+        products.map(async (product) => {
+            const foundProduct = await getProductById(product.productId)
+
+            if (foundProduct) {
+                return {
+                    price: foundProduct.product_price,
+                    quantity: product.quantity,
+                    productId: product.productId,
+                }
+            }
+        })
+    )
+}
+
 module.exports = {
     findAllDraftsForShop,
     findAllPublishForShop,
@@ -101,4 +117,5 @@ module.exports = {
     findProduct,
     updateProductById,
     getProductById,
+    checkProductByServer,
 }

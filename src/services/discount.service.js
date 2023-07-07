@@ -160,7 +160,7 @@ class DiscountService {
             discount_min_order_value,
             discount_user_per_used,
             discount_users_used,
-            discoun_type,
+            discount_type,
             discount_value,
         } = foundDiscount
 
@@ -193,13 +193,13 @@ class DiscountService {
 
         // kiem tra discount la fixed or percentage
 
-        const amount = discoun_type === 'fixed_amount' ? discount_value : totalOrder * (discount_value / 100)
+        const amount = discount_type === 'fixed_amount' ? discount_value : totalOrder * (discount_value / 100)
 
         const totalPrice = totalOrder - amount
 
         return {
             totalOrder,
-            amount,
+            discount: amount,
             totalPrice: totalPrice < 0 ? 0 : totalPrice,
         }
     }

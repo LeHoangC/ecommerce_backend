@@ -117,7 +117,7 @@ class AccessService {
             return {
                 shop: getInfoData(['_id', 'name', 'email'], foundShop),
                 tokens,
-                status: 'ok',
+                status: 'success',
             }
         } catch (error) {
             return {
