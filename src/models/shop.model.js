@@ -3,7 +3,7 @@ const mongoose = require('mongoose') // Erase if already required
 // Declare the Schema of the Mongo model
 
 const DOCUMENT_NAME = 'Shop'
-const COLLECTION_NAME = 'Shops'
+const COLLECTION_NAME = 'shops'
 
 var shopSchema = new mongoose.Schema(
     {

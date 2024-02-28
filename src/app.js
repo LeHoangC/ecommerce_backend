@@ -23,6 +23,12 @@ app.use(compression())
 
 // init db
 
+// require('./tests/inventory.test')
+
+// const productTets = require('./tests/product.test')
+
+// productTets.purchaseProduct('001', 10)
+
 require('./dbs/init.mongodb')
 // checkOverload()
 

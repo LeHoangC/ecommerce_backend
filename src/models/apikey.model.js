@@ -1,7 +1,7 @@
 const { Schema, model } = require('mongoose') // Erase if already required
 
 const DOCUMENT_NAME = 'Apikey'
-const COLLECTION_NAME = 'Apikeys'
+const COLLECTION_NAME = 'apikeys'
 
 // Declare the Schema of the Mongo model
 var apiKeySchema = new Schema(

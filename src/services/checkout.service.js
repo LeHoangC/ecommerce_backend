@@ -2,8 +2,8 @@ const { findCartById } = require('../models/repositories/cart.repo')
 const { BadRequestError } = require('../core/error.response')
 const { checkProductByServer } = require('../models/repositories/product.repo')
 const { getDiscountAmount } = require('./discount.service')
-const { acquireLock, releaseLock } = require('./redis.service')
 const order = require('../models/order.model')
+const { acquireLock, releaseLock } = require('./redis.service')
 
 /*
 
@@ -152,7 +152,7 @@ class CheckoutService {
                 throw new BadRequestError('Một số sản phẩm đã được cập nhật, vui lòng quay lại giỏ hàng...')
             }
 
-            const newOrder = order.create({
+            const newOrder = await order.create({
                 order_userId: userId,
                 order_checkout: checkout_order,
                 order_shipping: user_address,

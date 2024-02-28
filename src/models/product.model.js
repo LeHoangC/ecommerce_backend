@@ -2,7 +2,7 @@ const { Schema, model } = require('mongoose')
 const slugify = require('slugify')
 
 const DOCUMENT_NAME = 'Product'
-const COLLECTION_NAME = 'Products'
+const COLLECTION_NAME = 'products'
 
 var productSchema = new Schema(
     {
@@ -41,7 +41,7 @@ var productSchema = new Schema(
             type: Number,
             default: 4.5,
             min: [1, 'Rating must be above 1.0'],
-            max: [5, 'Rating must be above 5.0'],
+            max: [5, 'Rating must be below 5.0'],
             set: (val) => Math.round(val * 10) / 10,
         },
         product_variations: { type: Array, default: [] },
