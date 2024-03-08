@@ -34,6 +34,13 @@ require('./dbs/init.mongodb')
 
 // init routes
 
+app.get('/checkstatus', (req, res) => {
+    return res.json({
+        status: 'success',
+        api: 'oke',
+    })
+})
+
 app.use('/', require('./routes'))
 
 app.use((req, res, next) => {
@@ -47,7 +54,7 @@ app.use((error, req, res, next) => {
     res.status(statusCode).json({
         status: 'error',
         code: statusCode,
-        stack: error.stack,
+        // stack: error.stack,
         message: error.message || 'Internal Server Error',
     })
 })

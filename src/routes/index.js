@@ -6,13 +6,13 @@ const router = express.Router()
 
 // check apikey
 
-router.use(pushToLogDiscord)
+// router.use(pushToLogDiscord)
 
-router.use(apiKey)
+// router.use(apiKey)
 
 // check permission
 
-router.use(permission('0000'))
+// router.use(permission('0000'))
 
 router.use('/v1/api/inventory', require('./inventory'))
 router.use('/v1/api/checkout', require('./checkout'))
